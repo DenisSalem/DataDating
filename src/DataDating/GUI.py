@@ -1,0 +1,71 @@
+#! /usr/bin/python3
+
+import os
+import sys
+import http.server
+import socketserver
+import DataDating.Pattern
+
+pathToChunks = "gui/"
+
+pageIndex = open(pathToChunks+"index.html","r").read()
+pageProfile = open(pathToChunks+"profile.html","r").read()
+
+patternProcessor = DataDating.Pattern.processor(".:",":.","::")
+patternProcessor.preProcess("Index", pageIndex)
+
+class Termination(Exception):
+    pass
+
+class RequestHandler(http.server.SimpleHTTPRequestHandler):
+    def __init__(self, request, client_address, server):
+        self.output = ""
+        super(RequestHandler, self).__init__(request, client_address, server)
+
+    def reply(self):
+            self.protocol_version='HTTP/1.1'
+            self.send_response(200,'OK')
+            self.send_header('Content-type', 'text/html')
+            self.end_headers()
+            self.wfile.write(self.output.encode("utf-8"))
+    
+    # replacement of the default do_GET() method, handling server response.
+    def do_GET(self):
+        # Send assets or ressources
+        print(self.path)
+        if self.path == "/":
+            patternProcessor.Set("Content",pageProfile)
+            self.output = patternProcessor.parse("Index")
+            self.reply()
+
+        elif self.path == "/Logout":
+            raise Termination()
+
+        elif self.path == "/Profile":
+            patternProcessor.Set("Content",pageProfile)
+            self.output = patternProcessor.parse("Index")
+            self.reply()
+        elif self.path == "/Favourites":
+            patternProcessor.Set("Content","")
+            self.output = patternProcessor.parse("Index")
+            self.reply()
+        elif self.path == "/Matchs":
+            patternProcessor.Set("Content","")
+            self.output = patternProcessor.parse("Index")
+            self.reply()
+
+        else:
+            super(RequestHandler, self).do_GET()
+
+class Server(socketserver.TCPServer):
+    def __init__(self):
+        self.allow_reuse_address = True
+        super(Server, self).__init__(("127.0.0.1",8282), RequestHandler)
+
+    def handle_error(self, request, client_address):
+        if sys.exc_info()[0] == Termination:
+            raise Termination()
+        
+        else:
+            super(Server, self).handle_error(request, client_address)
+        

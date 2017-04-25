@@ -1,0 +1,22 @@
+#! /usr/bin/python3
+
+import os
+import DataDating.GUI
+import socketserver
+
+os.chdir("gui")
+httpd = DataDating.GUI.Server()
+
+print("Data Dating serving at port", 8282)
+try:
+    httpd.serve_forever()
+
+except DataDating.GUI.Termination:
+    httpd.shutdown()
+    print("Bye! :)")
+except KeyboardInterrupt:
+    httpd.shutdown()
+    print("\nBye! :)")
+
+    
+
