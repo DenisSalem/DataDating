@@ -18,8 +18,13 @@ class Termination(Exception):
     pass
 
 class RequestHandler(http.server.SimpleHTTPRequestHandler):
+    def log_message(self, format, *args):
+        if self.verbose:
+            super(RequestHandler, self).log_message()
+        
     def __init__(self, request, client_address, server):
         self.output = ""
+        self.verbose = False
         super(RequestHandler, self).__init__(request, client_address, server)
 
     def reply(self):
@@ -32,7 +37,6 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
     # replacement of the default do_GET() method, handling server response.
     def do_GET(self):
         # Send assets or ressources
-        print(self.path)
         if self.path == "/":
             patternProcessor.Set("Content",pageProfile)
             self.output = patternProcessor.parse("Index")
