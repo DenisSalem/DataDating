@@ -1,5 +1,5 @@
 body
-  {background-image: linear-gradient(#F7CAC9, #91A8D0);
+  {background-image: linear-gradient(#eaa6bf, #729FEF);
   background-position: center center;
   background-size: 100%, 25%;
   background-repeat: no-repeat;
@@ -37,7 +37,6 @@ header ul li a .mustsee
 
 .content
   {border-top: 1px solid transparent;
-  background-image: linear-gradient(#F7CAC9, #91A8D0);
   background-position: center center;
   background-size: 100%, 25%;
   background-repeat: no-repeat;
@@ -60,7 +59,7 @@ header ul li a .mustsee
   border-radius: 75px;
   margin-top: 1em;}
 
-#Profile input, #Profile select
+#Profile input, #Profile select, #Profile textarea
   {display: block;
   border: 1px solid rgba(255,255,255,0.5);
   background-color: transparent;
@@ -69,6 +68,10 @@ header ul li a .mustsee
   width: 90%;
   margin: auto;
   margin-top: 1em;}
+
+#Profile textarea
+	{resize: none;
+	height: 150px;}
 
 #Profile select
   {padding: 0px;
