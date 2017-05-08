@@ -1,8 +1,10 @@
 #! /usr/bin/python3
 
 import os
+import io
 import sys
 import cgi
+import json
 import http.server
 import socketserver
 import DataDating.Pattern
@@ -43,21 +45,31 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
             self.wfile.write(self.output.encode("utf-8"))
     
     # replacement of the default do_GET() method, handling server response.
-    def do_POST(self):
-        print("do something", self.path)
-                
-        form = cgi.FieldStorage(
-            fp=self.rfile,
-            headers=self.headers,
-            environ={
-                'REQUEST_METHOD':'POST',
-                'CONTENT_TYPE':self.headers['Content-Type']
-            }
-        )
+    def save_JSON(self, path, data):
+            output = io.open(path,"w")
+            output.write(json.dumps(data))
+            output.close()
 
-        print(ToJSON(form))
-        
-        self.do_GET()
+    def load_JSON(self, path):
+        try:
+            data = io.open(self.profileFolder+"/profile.json", "r").read()
+            return json.loads(data)
+        except:
+            return {}
+
+    def do_POST(self):
+        if self.path == "/Profile":
+            form = cgi.FieldStorage(
+                fp=self.rfile,
+                headers=self.headers,
+                environ={
+                    'REQUEST_METHOD':'POST',
+                    'CONTENT_TYPE':self.headers['Content-Type']
+                }
+            )
+
+            self.save_JSON(self.profileFolder+"/profile.json", ToJSON(form))
+            self.do_GET()
 
     def do_GET(self):
         # Send assets or ressources
@@ -70,9 +82,12 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
             raise Termination()
 
         elif self.path == "/Profile":
+            profile = self.load_JSON(self.profileFolder+"/profile.json")
+            print(profile)
             patternProcessor.Set("Content",pageProfile)
             self.output = patternProcessor.parse("Index")
             self.reply()
+
         elif self.path == "/Favourites":
             patternProcessor.Set("Content","")
             self.output = patternProcessor.parse("Index")
@@ -86,9 +101,11 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
             super(RequestHandler, self).do_GET()
 
 class Server(socketserver.TCPServer):
-    def __init__(self):
+    def __init__(self, profileFolder):
+        self.profileFolder = profileFolder
         self.allow_reuse_address = True
         super(Server, self).__init__(("127.0.0.1",8282), RequestHandler)
+        self.RequestHandlerClass.profileFolder = self.profileFolder
 
     def handle_error(self, request, client_address):
         if sys.exc_info()[0] == Termination:
