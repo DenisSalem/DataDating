@@ -1,85 +1,89 @@
 body
-  {background-image: linear-gradient(#eaa6bf, #729FEF);
-  background-position: center center;
-  background-size: 100%, 25%;
-  background-repeat: no-repeat;
-  font-family: Sans;
-  font-weight: lighter;
-  color: white;
-  margin: 0px;
-  font-size: 0.8em;
-  background-attachment: fixed;}
+	{background-image: linear-gradient(#EAA6BF, #729FEF);
+	background-position: center center;
+	background-size: 100%, 25%;
+	background-repeat: no-repeat;
+	font-family: Sans;
+	font-weight: lighter;
+	color: white;
+	margin: 0px;
+	font-size: 0.8em;
+	background-attachment: fixed;}
 
 a
-  {color: white;
-  outline: none;
-  text-decoration: none;}
+	{color: white;
+	outline: none;
+	text-decoration: none;}
 
 header ul
-  {list-style-type: none;
-  text-align: center;
-  margin: 0px;
-  border-top: 1em solid transparent;
-  padding-bottom: 1em;
-  border-bottom: 1px solid rgba(255,255,255,0.5);}
+	{list-style-type: none;
+	text-align: center;
+	margin: 0px;
+	border-top: 1em solid transparent;
+	padding-bottom: 1em;
+	border-bottom: 1px solid rgba(255,255,255,0.5);}
 
 header ul li
-  {display: inline-block;
-  margin-left: 1em;
-  margin-right: 1em;}
+	{display: inline-block;
+	margin-left: 1em;
+	margin-right: 1em;}
 
 header ul li a img
-  {padding: 2px;
-  transition: 0.25s ease opacity;}
+	{padding: 2px;
+	transition: 0.25s ease opacity;}
       
 header ul li a .mustsee
-  {border: 1px solid white;}
+	{border: 1px solid white;}
 
 .content
-  {border-top: 1px solid transparent;
-  background-position: center center;
-  background-size: 100%, 25%;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  margin: auto;
-  margin-top: 1em;
-  max-width: 768px;}
+	{border-top: 1px solid transparent;
+	background-position: center center;
+	background-size: 100%, 25%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	margin: auto;
+	margin-top: 1em;
+	max-width: 768px;}
 
 #Profile
-  {text-align: center;
-  display: block;}
+	{text-align: center;
+	display: block;}
 
 #avatarSelection
-  {display: block;
-  background-size: cover;
-  width: 150px;
-  background-color: rgba(0,0,0,0.5);
-  height: 150px;
-  margin: auto;
-  border-radius: 75px;
-  margin-top: 1em;}
+	{display: block;
+	background-size: cover;
+	width: 150px;
+	background-color: rgba(0,0,0,0.5);
+	height: 150px;
+	margin: auto;
+	border-radius: 75px;
+	margin-top: 1em;}
 
 #Profile input, #Profile select, #Profile textarea
-  {display: block;
-  border: 1px solid rgba(255,255,255,0.5);
-  background-color: transparent;
-  color: white;
-  font-size: 2em;
-  width: 90%;
-  margin: auto;
-  margin-top: 1em;}
+	{display: block;
+ 	border: 1px solid rgba(255,255,255,0.5);
+	background-color: transparent;
+	color: white;
+	font-size: 2em;
+	width: 90%;
+	margin: auto;
+	margin-top: 1em;}
+
+#Profile input[type=submit]
+	{background-color: white;
+	color: #729FEF;}
 
 #Profile textarea
 	{resize: none;
 	height: 150px;}
 
 #Profile select
-  {padding: 0px;
-  width: 90.5%;}
+	{padding: 0px;
+	width: 90.5%;}
 
 #Profile select option
-  {background-color: grey;}
+	{background-color: grey;}
 
 footer
-  {display:block;
-  height: 100px;}
+	{display:block;
+	height: 100px;}

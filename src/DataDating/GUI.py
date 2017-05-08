@@ -2,6 +2,7 @@
 
 import os
 import sys
+import cgi
 import http.server
 import socketserver
 import DataDating.Pattern
@@ -13,6 +14,13 @@ pageProfile = open(pathToChunks+"profile.html","r").read()
 
 patternProcessor = DataDating.Pattern.processor(".:",":.","::")
 patternProcessor.preProcess("Index", pageIndex)
+
+def ToJSON(data):
+    output = dict()
+    for key in dict(data).keys():
+        output[key] = data[key].value
+
+    return output
 
 class Termination(Exception):
     pass
@@ -35,6 +43,22 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
             self.wfile.write(self.output.encode("utf-8"))
     
     # replacement of the default do_GET() method, handling server response.
+    def do_POST(self):
+        print("do something", self.path)
+                
+        form = cgi.FieldStorage(
+            fp=self.rfile,
+            headers=self.headers,
+            environ={
+                'REQUEST_METHOD':'POST',
+                'CONTENT_TYPE':self.headers['Content-Type']
+            }
+        )
+
+        print(ToJSON(form))
+        
+        self.do_GET()
+
     def do_GET(self):
         # Send assets or ressources
         if self.path == "/":

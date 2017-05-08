@@ -1,13 +1,43 @@
 #! /usr/bin/python3
 
 import os
-import DataDating.GUI
+import sys
+import json
 import socketserver
+import DataDating.GUI
+from os.path import expanduser
+# Checking some states
+
+profileFolder = expanduser("~")+"/.DataDating/"+sys.argv[1]
+IsLocaleProfileExists = os.path.isdir(profileFolder)
+
+if not IsLocaleProfileExists:
+    try:
+        os.mkdir(expanduser("~")+"/.DataDating/")
+    except FileExistsError:
+        pass
+    
+    os.mkdir(profileFolder)
+
+    DefaultConfiguration = {
+        "HideProfile":True,
+        "MaximumPeerMediasSize":32,
+        "MaximumPeerMediasCount":32,
+        "PeersMaxDistance":30,
+        "PeersMinCorrelation":50
+    }
+
+    configurationFile = open(profileFolder+"/configuration.json","w")
+    configurationFile.write(json.dumps(DefaultConfiguration))
+    configurationFile.close()
+# Serving
 
 os.chdir("gui")
+
 httpd = DataDating.GUI.Server()
 
-print("Data Dating serving at port", 8282)
+print("Data Dating serving on localhost:8282")
+
 try:
     httpd.serve_forever()
 

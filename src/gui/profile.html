@@ -1,17 +1,17 @@
     <div id="Profile" class="content">
       <h1>PROFILE</h1>
       <div id="avatarSelection"></div>
-      <form>
+      <form method="post" action="Profile">
       	<h2 id="summaryHeader">Description</h2>
-	<textarea name="user_summary"></textarea>
+	<textarea name="user_Summary"></textarea>
         <h2>Informations Générales</h2>
-          <input type="text" name="user_Name" placeholder="Nom d'utilisateur" />
-          <input type="text" name="user_Age"  placeholder="Âge" />
-          <input type="text" name="user_Job" placeholder="Profession" />
-          <input type="text" name="user_Hashtag" value="" placeholder="Mot clés">
-          <input type="text" name="user_Country" placeholder="Pays" />
-          <input type="text" name="user_City" placeholder="Ville" />
-          <select name="user_Gender">
+          <input type="text" name="user_name" placeholder="Nom d'utilisateur" />
+          <input type="text" name="user_age"  placeholder="Âge" />
+          <input type="text" name="user_job" placeholder="Profession" />
+          <input type="text" name="user_hashtag" value="" placeholder="Mot clés">
+          <input type="text" name="user_country" placeholder="Pays" />
+          <input type="text" name="user_city" placeholder="Ville" />
+          <select name="user_gender">
             <option value="undefined" selected="selected" >Genre</option>
             <option value="male">Homme</option>
             <option value="female">Femme</option>
@@ -28,7 +28,7 @@
           <input type="text" name="user_doin_geek_stuff" placeholder="Geekeries" />
           <input type="text" name="user_doin_stuff" placeholder="Autres activités" />
         <h2 id="sexualityHeader">Les gouts et les couleurs</h2>
-          <input type="text" name="favorite_songs" placeholder="Chansons favorites" />
+          <input type="text" name="favorite_musics" placeholder="Musiques favorites" />
           <input type="text" name="favorite_movies" placeholder="Films favoris" />
           <input type="text" name="favorite_games" placeholder="Jeux favoris" />
           <input type="text" name="favorite_books" placeholder="Livres favoris" />
@@ -44,7 +44,7 @@
             <option value="sourness">Acide</option>
             <option value="Umami">Umami</option>
           </select>
-          <select name="user_Sexuality">
+          <select name="user_sexuality">
             <option value="undefined" selected="selected" >Sexualité</option>
             <option value="heterosexual">Hétérosexuelle</option>
             <option value="homosexuel">Homosexuelle</option>
@@ -53,6 +53,6 @@
             <option value="altersexual">Altersexuelle</option>
             <option value="asexual">Asexuelle</option>
           </select>
-
+	  <input type="submit" value="Mettre à jour le profile" />
       </form>
     </div>
