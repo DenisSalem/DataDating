@@ -59,9 +59,8 @@ header ul li a .mustsee
 	border-radius: 75px;
 	margin-top: 1em;}
 
-#Profile input, #Profile select, #Profile textarea
-	{display: block;
- 	border: 1px solid rgba(255,255,255,0.5);
+#Profile inputs, #Profile select, #Profile textarea
+	{border: 1px solid rgba(255,255,255,0.5);
 	background-color: transparent;
 	color: white;
 	font-size: 2em;

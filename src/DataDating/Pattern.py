@@ -7,10 +7,11 @@ class processor():
         self.closeSymbol	= closeSymbol
         self.openSymbol		= openSymbol
         self.separator		= separator
-        self.dictionnary        = dict()
+        self.dictionary        = dict()
         self.functions		= dict()
         self.functions["Get"] = self.Get
         self.functions["For"] = self.For
+        self.functions["IfEqual"] = self.IfEqual
         self.functions["RecursiveFor"] = self.RecursiveFor
         self.strict             = True
         self.currentStrings     = dict()
@@ -29,25 +30,35 @@ class processor():
         except:
             pass
 
+    def IfEqual(self, argv):
+        try:
+            if argv[1] == self.dictionary[argv[0]]:
+                return argv[2]
+        except:
+            return str()
+
     def DelValue(self, key):
         try:
-            del self.dictionnary[key]
+            del self.dictionary[key]
         except:
             pass
 
-    def SetWholeDictionnary(self, dictionnary):
-        for key in dictionnary:
-            self.dictionnary[key] = dictionnary[key]
+    def SetWholeDictionary(self, dictionary):
+        for key in dictionary:
+            self.dictionary[key] = dictionary[key]
 
     def Set(self, symbol, value):
-       self.dictionnary[symbol] = value
+       self.dictionary[symbol] = value
 
     def Get(self, symbol):
-        return self.dictionnary[symbol[0]]
+        try:
+            return self.dictionary[symbol[0]]
+        except KeyError:
+            return str()
 
     def For(self, argv):
         outputString = str()
-        for Item in self.dictionnary[argv[0]]:
+        for Item in self.dictionary[argv[0]]:
             outputString += argv[1].format(Item) + argv[2]
 
         return outputString[:-len(argv[2])]
@@ -75,7 +86,7 @@ class processor():
             argv[2],
             argv[3],
             argv[4],
-            self.dictionnary[argv[0]]
+            self.dictionary[argv[0]]
         )
         return outputString
 

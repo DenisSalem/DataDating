@@ -68,7 +68,16 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
                 }
             )
 
-            self.save_JSON(self.profileFolder+"/profile.json", ToJSON(form))
+            previous = self.load_JSON(self.profileFolder+"/profile.json")
+            current = ToJSON(form)
+            
+            # Save field even if it's empty
+
+            for key in previous.keys():
+                if not key in current.keys():
+                    current[key] = ""
+
+            self.save_JSON(self.profileFolder+"/profile.json", current)
             self.do_GET()
 
     def do_GET(self):
@@ -83,7 +92,7 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
 
         elif self.path == "/Profile":
             profile = self.load_JSON(self.profileFolder+"/profile.json")
-            print(profile)
+            patternProcessor.SetWholeDictionary(profile)
             patternProcessor.Set("Content",pageProfile)
             self.output = patternProcessor.parse("Index")
             self.reply()
