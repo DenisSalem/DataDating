@@ -4,20 +4,13 @@
       <h1>PROFILE</h1>
       <div id="avatarSelection"></div>
       <form method="post" action="Profile">
-      	<!-- <div class="hashtags">
-		<textarea class="data"></textarea>
-		<ul class="displayedData">
-		</ul>
-		<input type="text" value="" class="inputData" />
-	</div> -->
       	<h2 id="summaryHeader">Description</h2>
 	<textarea name="user_summary">.:Get::user_summary:.</textarea>
         <h2>Informations Générales</h2>
-	  <div class="hashtags" ht-default-value=".:Get::user_name:." ht-name="user_name"></div>
           <input type="text" name="user_name" placeholder="Nom d'utilisateur" value=".:Get::user_name:." />
           <input type="text" name="user_age"  placeholder="Âge" value=".:Get::user_age:."/>
           <input type="text" name="user_job" placeholder="Profession" value=".:Get::user_job:." />
-          <input type="text" name="user_hashtag" placeholder="Mot clés" value=".:Get::user_hashtag:.">
+	  <div class="hashtags" ht-default-value=".:Get::user_hashtag:." ht-name="user_hashtag"></div>
           <input type="text" name="user_country" placeholder="Pays" value=".:Get::user_country:."/>
           <input type="text" name="user_city" placeholder="Ville" value=".:Get::user_city:." />
           <select name="user_gender">

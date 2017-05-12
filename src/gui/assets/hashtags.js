@@ -1,20 +1,24 @@
+function refreshHashtags(ul) {
+	textarea = ul.parent().children(".data");
+	var outputData = "";
+	ul.children("li").each(function() {
+		outputData+= $(this).text()+'|';
+	});
+	$(textarea).text(outputData);
+}
+
 function appendHashtag(a) {
 	ul = $(a.parentNode).children(".displayedData");
-	textarea = ul.parent().children(".data");
 	if (a.value != "") {
 		ul.append("<li class=\"hashtag\">"+a.value+"</li>");
 		$(".hashtag").on('click', function() {
 			$(this).remove();
+			refreshHashtags(ul);
 		})
-		var outputData = "";
-		ul.children("li").each(function() {
-			outputData+= $(this).text()+'|';
-		});
-		$(textarea).text(outputData);
+		refreshHashtags(ul);
 	}
 	a.value = "";
 }
-
 
 $(document).ready(function() {
 
@@ -23,7 +27,9 @@ $(document).ready(function() {
 		ul = $("<ul class=\"displayedData\"></ul>");
 		hashtags = $(this).attr("ht-default-value").split("|");
 		for (var i=0; i < hashtags.length; i++) {
-			ul.append("<li class=\"hashtag\">"+hashtags[i]+"</li>");
+		  	if (hashtags[i] != "") {
+				ul.append("<li class=\"hashtag\">"+hashtags[i]+"</li>");
+			}
 		}
 		$(this).append(ul);
 		$(this).append("<input type=\"text\" value=\"\" class=\"inputData\" />");
@@ -36,7 +42,9 @@ $(document).ready(function() {
 		}
 		else if (event.which == 8) {
 		  	if (this.value == "") {
-				$(this.parentNode).children(".displayedData").children("li:last-child").remove();
+				ul = $(this.parentNode).children(".displayedData");
+				ul.children("li:last-child").remove();
+				refreshHashtags(ul);
 			}
 		}
 	});
@@ -49,6 +57,4 @@ $(document).ready(function() {
 	$(".hashtags input").bind('blur', function() {
 		appendHashtag(this);
 	});
-
-
 });
