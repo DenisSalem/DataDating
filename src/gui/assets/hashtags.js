@@ -1,6 +1,6 @@
 function appendHashtag(a) {
 	ul = $(a.parentNode).children(".displayedData");
-	textarea = $(ul.parentNode).children(".data");
+	textarea = ul.parent().children(".data");
 	if (a.value != "") {
 		ul.append("<li class=\"hashtag\">"+a.value+"</li>");
 		$(".hashtag").on('click', function() {
@@ -10,8 +10,7 @@ function appendHashtag(a) {
 		ul.children("li").each(function() {
 			outputData+= $(this).text()+'|';
 		});
-		
-		alert($(textarea).attr("class"));
+		$(textarea).text(outputData);
 	}
 	a.value = "";
 }
