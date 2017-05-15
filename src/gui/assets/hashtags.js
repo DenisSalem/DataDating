@@ -7,15 +7,19 @@ function refreshHashtags(ul) {
 	$(textarea).text(outputData);
 }
 
+function refreshOnClick() {
+	$(".hashtag").on('click', function() {
+		$(this).remove();
+		refreshHashtags(ul);
+	});
+}
+
 function appendHashtag(a) {
 	ul = $(a.parentNode).children(".displayedData");
 	if (a.value != "") {
 		ul.append("<li class=\"hashtag\">"+a.value+"</li>");
-		$(".hashtag").on('click', function() {
-			$(this).remove();
-			refreshHashtags(ul);
-		})
 		refreshHashtags(ul);
+		refreshOnClick();
 	}
 	a.value = "";
 }
@@ -34,7 +38,7 @@ $(document).ready(function() {
 		$(this).append(ul);
 		$(this).append("<input type=\"text\" value=\"\" class=\"inputData\" />");
 	});
-
+	
 	$(".hashtags .inputData").keypress(function( event ) {
 		if ( event.which == 13 ) {
 			event.preventDefault();
@@ -57,4 +61,6 @@ $(document).ready(function() {
 	$(".hashtags input").bind('blur', function() {
 		appendHashtag(this);
 	});
+	
+	refreshOnClick();
 });

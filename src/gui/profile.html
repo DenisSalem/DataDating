@@ -5,14 +5,13 @@
       <div id="avatarSelection"></div>
       <form method="post" action="Profile">
       	<h2 id="summaryHeader">Description</h2>
-	<textarea name="user_summary">.:Get::user_summary:.</textarea>
+	<textarea class="regularTextarea" name="user_summary">.:Get::user_summary:.</textarea>
         <h2>Informations Générales</h2>
-          <input type="text" name="user_name" placeholder="Nom d'utilisateur" value=".:Get::user_name:." />
-          <input type="text" name="user_age"  placeholder="Âge" value=".:Get::user_age:."/>
-          <input type="text" name="user_job" placeholder="Profession" value=".:Get::user_job:." />
-	  <div class="hashtags" ht-default-value=".:Get::user_hashtag:." ht-name="user_hashtag"></div>
-          <input type="text" name="user_country" placeholder="Pays" value=".:Get::user_country:."/>
-          <input type="text" name="user_city" placeholder="Ville" value=".:Get::user_city:." />
+          <input class="regularInput" type="text" name="user_name" placeholder="Nom d'utilisateur" value=".:Get::user_name:." />
+          <input class="regularInput" type="text" name="user_age"  placeholder="Âge" value=".:Get::user_age:."/>
+          <input class="regularInput" type="text" name="user_job" placeholder="Profession" value=".:Get::user_job:." />
+          <input class="regularInput" type="text" name="user_country" placeholder="Pays" value=".:Get::user_country:."/>
+          <input class="regularInput" type="text" name="user_city" placeholder="Ville" value=".:Get::user_city:." />
           <select name="user_gender">
             <option value="undefined" selected="selected" .:IfEqual::user_gender::undefined::selected="selected":.>Genre</option>
             <option value="male" .:IfEqual::user_gender::male::selected="selected":.>Homme</option>
@@ -20,31 +19,6 @@
             <option value="transgenderMtF" .:IfEqual::user_gender::transgenderMtF::selected="selected":. >Transgenre (MtF)</option>
             <option value="transgenderFtM" .:IfEqual::user_gender::transgenderFtM::selected="selected":. >Transgenre (FtM)</option>
             <option value="nonBinary" .:IfEqual::user_gender::nonBinary::selected="selected":.>Non Binaire</option>
-          </select>
-	  <h2 id="studiesHeader">Études et activités</h2>
-          <input type="text" name="user_highschool" placeholder="Lycée" value=".:Get::user_highschool:." />
-          <input type="text" name="user_university" placeholder="École supérieur" value=".:Get::user_university:."/>
-          <input type="text" name="user_workplace" placeholder="Entreprise" value=".:Get::user_workplace:." />
-          <input type="text" name="user_doin_sports" placeholder="Sports" value=".:Get::user_doin_sports:." />
-          <input type="text" name="user_doin_arts" placeholder="Arts" value=".:Get::user_doin_arts:." />
-          <input type="text" name="user_doin_geek_stuff" placeholder="Geekeries" value=".:Get::user_doin_geek_stuff:." />
-          <input type="text" name="user_doin_stuff" placeholder="Autres activités" value=".:Get::user_doin_stuff:." />
-        <h2 id="sexualityHeader">Les gouts et les couleurs</h2>
-          <input type="text" name="favorite_musics" placeholder="Musiques favorites" value=".:Get::favorite_musics:." />
-          <input type="text" name="favorite_movies" placeholder="Films favoris" value=".:Get::favorite_movies:." />
-          <input type="text" name="favorite_games" placeholder="Jeux favoris" value=".:Get::favorite_games:." />
-          <input type="text" name="favorite_books" placeholder="Livres favoris" value=".:Get::favorite_books:." />
-          <input type="text" name="favorite_painters" placeholder="Peintres favoris" value=".:Get::favorite_painters:." />
-          <input type="text" name="favorite_writers" placeholder="Écrivain favoris" value=".:Get::favorite_writers:." />
-          <input type="text" name="favorite_directors" placeholder="Réalisateurs favoris" value=".:Get::favorite_directors:."/>
-          <input type="text" name="favorite_musicians_n_bands" placeholder="Musiciens/groupes favoris" value=".:Get::favorite_musicians_n_bands:." />
-          <select name="user_tastes">
-            <option value="undefined" .:IfEqual::user_tastes::undefined::selected="selected":.>Saveur</option>
-            <option value="sweetness".:IfEqual::user_tastes::sweetness::selected="selected":.>Sucré</option>
-            <option value="saltiness".:IfEqual::user_tastes::saltiness::selected="selected":.>Salé</option>
-            <option value="bitterness".:IfEqual::user_tastes::bitterness::selected="selected":.>Amer</option>
-            <option value="sourness".:IfEqual::user_tastes::sourness::selected="selected":.>Acide</option>
-            <option value="umami" .:IfEqual::user_tastes::umami::selected="selected":.>Umami</option>
           </select>
           <select name="user_sexuality">
             <option value="undefined" .:IfEqual::user_sexuality::undefined::selected="selected":.>Sexualité</option>
@@ -55,6 +29,8 @@
             <option value="altersexual" .:IfEqual::user_sexuality::altersexual::selected="selected":. >Altersexuelle</option>
             <option value="asexual" .:IfEqual::user_sexuality::asexual::selected="selected":. >Asexuelle</option>
           </select>
-	  <input type="submit" value="Mettre à jour le profile" />
+	  <h2>Mots clés:</h2>
+	  <div class="hashtags" ht-default-value=".:Get::user_hashtag:." ht-name="user_hashtag"></div>
+	  <p><input type="submit" value="Mettre à jour le profile" /></p>
       </form>
     </div>
