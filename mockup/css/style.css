@@ -3,7 +3,7 @@ body
 	background-position: center center;
 	background-size: 100%, 25%;
 	background-repeat: no-repeat;
-	font-family: Jo;
+	font-family: sans;
 	font-weight: lighter;
 	color: white;
 	margin: 0px;
@@ -50,6 +50,8 @@ h1, h2
 	{text-align: center;
 	display: block;}
 
+#stats h1
+	{text-align: center;}
 #avatarSelection
 	{display: block;
 	background-size: cover;
