@@ -34,7 +34,8 @@ header ul li a img
 
 header ul li a .mustsee
 	{border: 1px solid white;}
-
+h1, h2
+	{font-family: Elsa;}
 .content
 	{border-top: 1px solid transparent;
 	background-position: center center;
