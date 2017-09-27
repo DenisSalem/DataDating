@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>DATA DATING</title>
+    <link rel="stylesheet" href="css/fontfaces.css">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/hashtags.css" />
+  </head>
+  <body>
+    <header>
+      <ul>
+        <!-- Icons taken from http://www.flaticon.com -->
+        <li><a href="/Profile"><img src="images/avatar-inside-a-circle_-_CC_By_SA_3.0._-_Nice_And_Serious.png" alt="VOTRE PROFILE" title="VOTRE PROFILE"></a></li>
+        <li><a href="/Favourites"><img src="images/heart-shape-outline_-_CC_By_SA_3.0_-_Dave_Gandy.png" alt="PROFILES FAVORIS" title="PROFILES FAVORIS"></a></li>
+        <li><a href="/Matchs"><img src="images/loupe_-_CC_By_SA_3.0_-_Lyolya.png" alt="CORRESPONDANCES" title="CORRESPONDANCES"></a></li>
+        <li><a href=""><img src="images/notification-bell_-_CC_By_SA_3.0_-_Pavel_Kozlov.png" alt="NOTIFICATIONS" title="NOTIFICATIONS" class="mustsee"></a></li>
+        <li><a href=""><img src="images/stats_-_CC_By_SA_3.0_-_Lucy_G.png" alt="STATISTIQUES" title="STATISTIQUES"></a></li>
+        <li><a href=""><img src="images/settings_-_CC_By_SA_3.0_-_EpicCoders.png" alt="CONFIGURATION" title="CONFIGURATION"></a></li>
+        <li><a href="/Logout"><img src="images/logout_-_CC_By_SA_3.0_-_Lucy_G.png" alt="DÉCONNEXION" title="DÉCONNEXION"></a></li>
+      </ul>
+    </header>
+    <script src="scripts/jquery-3.2.1.min.js"></script>
+    <script src="scripts/hashtags.js"></script>
+    <div id="Profile" class="content">
+      <h1>PROFILE</h1>
+      <form method="post" action="Profile">
+      	<h2 id="summaryHeader">Description</h2>
+	<textarea class="regularTextarea" name="user_summary">.:Get::user_summary:.</textarea>
+        <h2>Informations Générales</h2>
+          <input class="regularInput" type="text" name="user_name" placeholder="Nom d'utilisateur" value="User name" />
+          <input class="regularInput" type="text" name="user_age"  placeholder="Âge" value="Age"/>
+          <input class="regularInput" type="text" name="user_job" placeholder="Profession" value="Job" />
+          <input class="regularInput" type="text" name="user_country" placeholder="Pays" value="Country"/>
+          <input class="regularInput" type="text" name="user_city" placeholder="Ville" value="City" />
+          <select name="user_gender">
+            <option value="undefined" selected="selected" .:IfEqual::user_gender::undefined::selected="selected":.>Genre</option>
+            <option value="male" .:IfEqual::user_gender::male::selected="selected":.>Homme</option>
+            <option value="female" .:IfEqual::user_gender::female::selected="selected":.>Femme</option>
+            <option value="transgenderMtF" .:IfEqual::user_gender::transgenderMtF::selected="selected":. >Transgenre (MtF)</option>
+            <option value="transgenderFtM" .:IfEqual::user_gender::transgenderFtM::selected="selected":. >Transgenre (FtM)</option>
+            <option value="nonBinary" .:IfEqual::user_gender::nonBinary::selected="selected":.>Non Binaire</option>
+          </select>
+          <select name="user_sexuality">
+            <option value="undefined" .:IfEqual::user_sexuality::undefined::selected="selected":.>Sexualité</option>
+            <option value="heterosexual" .:IfEqual::user_sexuality::heterosexual::selected="selected":.>Hétérosexuelle</option>
+            <option value="homosexual" .:IfEqual::user_sexuality::homosexual::selected="selected":.>Homosexuelle</option>
+            <option value="bisexual" .:IfEqual::user_sexuality::bisexual::selected="selected":. >Bisexuelle</option>
+            <option value="pansexual" .:IfEqual::user_sexuality::pansexual::selected="selected":. >Pansexuelle</option>
+            <option value="altersexual" .:IfEqual::user_sexuality::altersexual::selected="selected":. >Altersexuelle</option>
+            <option value="asexual" .:IfEqual::user_sexuality::asexual::selected="selected":. >Asexuelle</option>
+          </select>
+	  <h2>Mots clés:</h2>
+	  <div class="hashtags" ht-default-value=".:Get::user_hashtag:." ht-name="hashtag"></div>
+	  <p><input type="submit" value="Update profile" /></p>
+      </form>
+    </div>
+    <footer>
+    </footer>
+  </body>
+</html>

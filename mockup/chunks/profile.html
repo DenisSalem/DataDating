@@ -1,0 +1,35 @@
+    <script src="assets/jquery-3.2.1.min.js"></script>
+    <script src="assets/hashtags.js"></script>
+    <div id="Profile" class="content">
+      <h1>PROFILE</h1>
+      <form method="post" action="Profile">
+      	<h2 id="summaryHeader">Description</h2>
+	<textarea class="regularTextarea" name="user_summary">.:Get::user_summary:.</textarea>
+        <h2>Informations Générales</h2>
+          <input class="regularInput" type="text" name="user_name" placeholder="Nom d'utilisateur" value=".:Get::user_name:." />
+          <input class="regularInput" type="text" name="user_age"  placeholder="Âge" value=".:Get::user_age:."/>
+          <input class="regularInput" type="text" name="user_job" placeholder="Profession" value=".:Get::user_job:." />
+          <input class="regularInput" type="text" name="user_country" placeholder="Pays" value=".:Get::user_country:."/>
+          <input class="regularInput" type="text" name="user_city" placeholder="Ville" value=".:Get::user_city:." />
+          <select name="user_gender">
+            <option value="undefined" selected="selected" .:IfEqual::user_gender::undefined::selected="selected":.>Genre</option>
+            <option value="male" .:IfEqual::user_gender::male::selected="selected":.>Homme</option>
+            <option value="female" .:IfEqual::user_gender::female::selected="selected":.>Femme</option>
+            <option value="transgenderMtF" .:IfEqual::user_gender::transgenderMtF::selected="selected":. >Transgenre (MtF)</option>
+            <option value="transgenderFtM" .:IfEqual::user_gender::transgenderFtM::selected="selected":. >Transgenre (FtM)</option>
+            <option value="nonBinary" .:IfEqual::user_gender::nonBinary::selected="selected":.>Non Binaire</option>
+          </select>
+          <select name="user_sexuality">
+            <option value="undefined" .:IfEqual::user_sexuality::undefined::selected="selected":.>Sexualité</option>
+            <option value="heterosexual" .:IfEqual::user_sexuality::heterosexual::selected="selected":.>Hétérosexuelle</option>
+            <option value="homosexual" .:IfEqual::user_sexuality::homosexual::selected="selected":.>Homosexuelle</option>
+            <option value="bisexual" .:IfEqual::user_sexuality::bisexual::selected="selected":. >Bisexuelle</option>
+            <option value="pansexual" .:IfEqual::user_sexuality::pansexual::selected="selected":. >Pansexuelle</option>
+            <option value="altersexual" .:IfEqual::user_sexuality::altersexual::selected="selected":. >Altersexuelle</option>
+            <option value="asexual" .:IfEqual::user_sexuality::asexual::selected="selected":. >Asexuelle</option>
+          </select>
+	  <h2>Mots clés:</h2>
+	  <div class="hashtags" ht-default-value=".:Get::user_hashtag:." ht-name="user_hashtag"></div>
+	  <p><input type="submit" value="Mettre à jour le profile" /></p>
+      </form>
+    </div>
