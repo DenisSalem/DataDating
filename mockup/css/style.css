@@ -92,12 +92,30 @@ footer
 	{	border: 1px solid rgba(255, 255, 255, .5);
 		display: block;
 		padding: 5px;
-		margin: 5px;
-  }
+		margin: 5px;}
+
+.favProfil
+	{ display: inline-block;
+	  border: 1px solid rgba(255, 255, 255, .8);
+		border-radius: 25px;
+		width:25%;
+		height:50px;
+		padding: 5px;
+		margin: 5px;	}
 
 .imgNotif
   { float: left;}
 
+.imgFavo
+  { float: left;
+	padding-top: 6px;}
+
 .textNotif
 	{padding-left: 5%;
 	font-size: 16px;}
+
+.textFavo
+	{padding-left: 20%;
+	font-size: 14px;
+	text-align: center;
+	line-height: 50px;}
