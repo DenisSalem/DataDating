@@ -31,7 +31,7 @@ header ul li
 header ul li a img
 	{padding: 2px;
 	transition: 0.25s ease opacity;}
-      
+
 header ul li a .mustsee
 	{border: 1px solid white;}
 
@@ -86,3 +86,17 @@ header ul li a .mustsee
 footer
 	{display:block;
 	height: 100px;}
+
+.notifContent
+	{	border: 1px solid rgba(255, 255, 255, .5);
+		display: block;
+		padding: 5px;
+		margin: 5px;
+  }
+
+.imgNotif
+  { float: left;}
+
+.textNotif
+	{padding-left: 5%;
+	font-size: 16px;}
